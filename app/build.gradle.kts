@@ -49,7 +49,16 @@ android {
         }
     }
 }
-
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+        }
+    }
+    repositories {
+        mavenLocal() // Publish to local Maven repository
+    }
+}
 dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
