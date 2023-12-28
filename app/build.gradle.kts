@@ -1,18 +1,14 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("maven-publish")
+
 }
 
 android {
     namespace = "com.example.sdkapp"
     compileSdk = 34
 
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-        }
-    }
+
 
     defaultConfig {
         applicationId = "com.example.sdkapp"
@@ -55,22 +51,13 @@ android {
         }
     }
 }
-publishing {
-    publications {
-        create<MavenPublication>("release") {
-            from(components["release"])
-        }
-    }
-    repositories {
-        mavenLocal() // Publish to local Maven repository
-    }
-}
+
 
 //publishing {
 //    publications {
 //        register<MavenPublication>("release") {
-//            groupId = "com.my-company"
-//            artifactId = "my-library"
+//            groupId = "com.github.Priyanshu-Xeno"
+//            artifactId = "sdkapp"
 //            version = "1.0"
 //
 //            afterEvaluate {

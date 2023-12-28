@@ -1,18 +1,47 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
     namespace = "com.example.sdkapp"
     compileSdk = 34
 
-    defaultConfig {
-        minSdk = 24
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
+//        publications {
+//            register<MavenPublication>("release") {
+//                groupId = "com.github.Priyanshu-Xeno"
+//                artifactId = "sdkapp"
+//                version = "1.0.7"
+//
+//                afterEvaluate {
+//                    from(components["release"])
+//                }
+//            }
+//        }
     }
+
+
+//    defaultConfig {
+//        minSdk = 24
+//
+//        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+//        consumerProguardFiles("consumer-rules.pro")
+//    }
+
+    defaultConfig {
+        aarMetadata {
+            minCompileSdk = 29
+        }
+        consumerProguardFiles("consumer-rules.pro")
+
+    }
+
 
     buildTypes {
         release {
@@ -31,8 +60,8 @@ android {
         jvmTarget = "1.8"
     }
 
-}
 
+}
 
 
 dependencies {
@@ -44,6 +73,23 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
+//
+//publishing {
+//    publications {
+//        create<MavenPublication>("release") {
+//            groupId = "com.github.Priyanshu-Xeno"
+//            artifactId = "sdkapp"
+//            version = "1.0.7"
+//
+//            from(components["release"])
+//        }
+//    }
+//    repositories {
+//        mavenLocal() // Publish to local Maven repository
+//    }
+//}
+
+
 
 
 
