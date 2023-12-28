@@ -57,7 +57,7 @@ android {
 }
 publishing {
     publications {
-        create<MavenPublication>("mavenJava") {
+        create<MavenPublication>("release") {
             from(components["release"])
         }
     }
