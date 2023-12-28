@@ -8,6 +8,12 @@ android {
     namespace = "com.example.sdkapp"
     compileSdk = 34
 
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
+
     defaultConfig {
         applicationId = "com.example.sdkapp"
         minSdk = 24
@@ -59,6 +65,20 @@ publishing {
         mavenLocal() // Publish to local Maven repository
     }
 }
+
+//publishing {
+//    publications {
+//        register<MavenPublication>("release") {
+//            groupId = "com.my-company"
+//            artifactId = "my-library"
+//            version = "1.0"
+//
+//            afterEvaluate {
+//                from(components["release"])
+//            }
+//        }
+//    }
+//}
 dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
